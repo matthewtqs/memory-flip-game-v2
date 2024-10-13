@@ -75,8 +75,9 @@ function initGame() {
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
           if (enableClick === true) {
-            console.log('disable click')
             enableClick = false;
+            console.log('disable click');
+            
             if (card[i] !== event.target) return;
             if (event.target.classList.contains("show")) return;
             if (isfirstClick) {
@@ -124,6 +125,9 @@ function cardsMatch(card1, card2) {
   match++;
   if (match === 8) {
       win();
+  }else{
+      enableClick = true;
+      console.log('Click enabled1')
   }
 }
 
@@ -138,6 +142,7 @@ function cardsDontMatch(card1, card2) {
   }, 300);
   setTimeout(function () {
       enableClick = true
+      console.log('Click enabled')
   }, 3000);
 }
 
