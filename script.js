@@ -125,10 +125,9 @@ function cardsMatch(card1, card2) {
   match++;
   if (match === 8) {
       win();
-  }else{
-      enableClick = true;
-      console.log('Click enabled1')
   }
+  enableClick = true
+  console.log('enabled click; match')
 }
 
 function cardsDontMatch(card1, card2) {
@@ -140,10 +139,10 @@ function cardsDontMatch(card1, card2) {
       card1.classList.toggle('show');
       card2.classList.toggle('show');
   }, 300);
-  setTimeout(function () {
+  setTimeout(function() {
       enableClick = true
-      console.log('Click enabled')
-  }, 3000);
+      console.log('enabled click; noMatch')
+  }, 850)
 }
 
 function win() {
