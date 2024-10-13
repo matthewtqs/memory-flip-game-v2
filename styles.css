@@ -43,7 +43,7 @@ body {
   min-width: 100%;
   object-fit: cover;
   width: 100%;
-  z-index: 0;
+  backface-visibility: hidden;
   transform: rotateY(180deg);
 }
 .deck {
@@ -76,7 +76,6 @@ body {
   list-style: none;
   margin-top: 15px;
   cursor: pointer;
-  z-index: 1;
 }
 
 .show {
@@ -86,7 +85,6 @@ body {
   font-size: 33px;
   color: white;
   cursor: default;
-  z-index: -1;
 }
 
 .match {
