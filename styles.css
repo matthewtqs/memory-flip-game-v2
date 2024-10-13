@@ -77,6 +77,8 @@ body {
   list-style: none;
   margin-top: 15px;
   cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .show {
