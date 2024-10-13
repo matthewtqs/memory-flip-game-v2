@@ -77,10 +77,12 @@ function initGame() {
       card[i].addEventListener("click", function (event) {
           if (enableClick === true) {
               shownCards += 1
+              console.log('shown - ', shownCards)
               if (shownCards === 2) {
                 enableClick = false;
                 shownCards = 0
                 console.log('disable click');
+                console.log('shown - ', shownCards);
               }
               if (card[i] !== event.target) return;
               if (event.target.classList.contains("show")) return;
