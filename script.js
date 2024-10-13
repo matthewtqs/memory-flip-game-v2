@@ -74,7 +74,7 @@ function initGame() {
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          if (enableClick === true) {
+          if (cardTest.length === 3) {
             enableClick = false;
             console.log('disable click');
             
@@ -85,7 +85,7 @@ function initGame() {
                 isfirstClick = false;
             }
             showCard(event.target);
-            setTimeout(addCard, 550, shuffledCards[i], event.target, cardTest, i);
+            setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
           }
       }, false);
   }
@@ -108,9 +108,6 @@ function addCard(card, cardHTML, testList, pos) {
       updateMoveCounter();
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
-  }else{
-      enableClick = true
-      console.log('enabled click, match')
   }
 }
 
@@ -143,7 +140,7 @@ function cardsDontMatch(card1, card2) {
   setTimeout(function() {
       enableClick = true
       console.log('enabled click, noMatch')
-  }, 850)
+  }, 550)
 }
 
 function win() {
