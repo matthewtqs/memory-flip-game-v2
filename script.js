@@ -108,7 +108,9 @@ function addCard(card, cardHTML, testList, pos) {
       updateMoveCounter();
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
-  }
+  }else{
+      enableClick = true
+      console.log('enabled click; match')
 }
 
 function testCards(card1, html1, x1, card2, html2, x2) {
@@ -126,8 +128,6 @@ function cardsMatch(card1, card2) {
   if (match === 8) {
       win();
   }
-  enableClick = true
-  console.log('enabled click; match')
 }
 
 function cardsDontMatch(card1, card2) {
