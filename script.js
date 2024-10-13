@@ -68,6 +68,7 @@ let isfirstClick = true;
 let timerID;
 let isRestart = false;
 let enableClick = true;
+let shownCards = 0
 
 function initGame() {
   createCards();
@@ -75,8 +76,10 @@ function initGame() {
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
           if (enableClick === true) {
-              if (cardTest.length === 3) {
+              shownCards += 1
+              if (shownCards === 2) {
                 enableClick = false;
+                shownCards = 0
                 console.log('disable click');
               }
               if (card[i] !== event.target) return;
