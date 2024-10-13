@@ -69,6 +69,7 @@ let timerID;
 let isRestart = false;
 let enableClick = true;
 let shownCards = 0
+let clickTimer = null;
 
 function initGame() {
   createCards();
@@ -80,6 +81,11 @@ function initGame() {
               console.log('shown - ', shownCards)
               if (shownCards === 2) {
                 enableClick = false;
+                if (clickTimer !== null) clearTimeout(clickTimer);
+                clickTimer = setTimeout(function() {
+                    enableClick = true
+                    console.log('enable click by timer')
+                }, 850)
                 shownCards = 0
                 console.log('disable click');
                 console.log('shown - ', shownCards);
@@ -143,11 +149,7 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-  }, 300);
-  setTimeout(function() {
-      enableClick = true
-      console.log('enabled click, noMatch')
-  }, 550)
+  }, 400);
 }
 
 function win() {
