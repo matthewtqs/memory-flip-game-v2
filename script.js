@@ -29,8 +29,13 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
-let cards = ["diamond", "diamond", "plane", "plane", "anchor", "anchor", "bolt", "bolt", "leaf", "leaf"
-  , "bicycle", "bicycle", "cube", "cube", "bomb", "bomb"];
+let cards = 
+  ["sanofi", "sanofi", 
+  "plavix", "plavix", 
+  "aprovel", "aprovel", 
+  "coaprovel", "coaprovel", 
+  "coplavix", "coplavix", 
+  "aprovasc", "aprovasc"];
 
 let shuffledCards = shuffle(cards);
 
