@@ -45,10 +45,12 @@ function createCards() {
       li.classList.toggle("card");
       const i = document.createElement("i");
       i.classList.toggle("fa");
-      if (card === "plane") {
-          i.classList.toggle("fa-paper-plane-o");
+      if (card === "plavix") {
+          const img = document.createElement("img");
+          img.src = 'assets/plavix-logo.png';
+          i.appendChild(img)
       } else {
-          i.classList.toggle("fa-" + card);
+          i.classList.toggle("fa-" + "bolt");
       }
       const deck = document.querySelector('.deck');
       li.appendChild(i);
