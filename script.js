@@ -110,7 +110,7 @@ function addCard(card, cardHTML, testList, pos) {
       testList.length = 0;
   }else{
       enableClick = true
-      console.log('enabled click; match')
+      console.log('enabled click, match')
   }
 }
 
@@ -142,7 +142,7 @@ function cardsDontMatch(card1, card2) {
   }, 300);
   setTimeout(function() {
       enableClick = true
-      console.log('enabled click; noMatch')
+      console.log('enabled click, noMatch')
   }, 850)
 }
 
