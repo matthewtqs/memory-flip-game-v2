@@ -77,17 +77,16 @@ function initGame() {
           if (cardTest.length === 3) {
             enableClick = false;
             console.log('disable click');
-            
-            if (card[i] !== event.target) return;
-            if (event.target.classList.contains("show")) return;
-            if (isfirstClick) {
-                timerID = setInterval(timer, 1000);
-                isfirstClick = false;
-            }
-            showCard(event.target);
-            setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
           }
-      }, false);
+          if (card[i] !== event.target) return;
+          if (event.target.classList.contains("show")) return;
+          if (isfirstClick) {
+              timerID = setInterval(timer, 1000);
+              isfirstClick = false;
+          }
+          showCard(event.target);
+          setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
+    }, false);
   }
 }
 
