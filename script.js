@@ -29,15 +29,8 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
-let cards = 
-  ["diamond", "diamond", 
-   "plane", "plane", 
-   "anchor", "anchor", 
-   "bolt", "bolt", 
-   "leaf", "leaf", 
-   "bicycle", "bicycle", 
-   "cube", "cube", 
-   "bomb", "bomb"];
+let cards = ["diamond", "diamond", "plane", "plane", "anchor", "anchor", "bolt", "bolt", "leaf", "leaf"
+  , "bicycle", "bicycle", "cube", "cube", "bomb", "bomb"];
 
 let shuffledCards = shuffle(cards);
 
@@ -67,39 +60,21 @@ let match = 0;
 let isfirstClick = true;
 let timerID;
 let isRestart = false;
-let enableClick = true;
-let shownCards = 0
-let clickTimer = null;
 
 function initGame() {
   createCards();
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          if (enableClick === true) {
-              shownCards += 1
-              console.log('shown - ', shownCards)
-              if (shownCards === 2) {
-                enableClick = false;
-                if (clickTimer !== null) clearTimeout(clickTimer);
-                clickTimer = setTimeout(function() {
-                    enableClick = true
-                    console.log('enable click by timer')
-                }, 850)
-                shownCards = 0
-                console.log('disable click');
-                console.log('shown - ', shownCards);
-              }
-              if (card[i] !== event.target) return;
-              if (event.target.classList.contains("show")) return;
-              if (isfirstClick) {
-                  timerID = setInterval(timer, 1000);
-                  isfirstClick = false;
-              }
-              showCard(event.target);
-              setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
+          if (card[i] !== event.target) return;
+          if (event.target.classList.contains("show")) return;
+          if (isfirstClick) {
+              timerID = setInterval(timer, 1000);
+              isfirstClick = false;
           }
-    }, false);
+          showCard(event.target);
+          setTimeout(addCard, 550, shuffledCards[i], event.target, cardTest, i);
+      }, false);
   }
 }
 
@@ -134,7 +109,6 @@ function testCards(card1, html1, x1, card2, html2, x2) {
 function cardsMatch(card1, card2) {
   card1.classList.add('match');
   card2.classList.add('match');
-  enableClick = true;
   match++;
   if (match === 8) {
       win();
@@ -149,7 +123,8 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-  }, 400);
+
+  }, 300);
 }
 
 function win() {
