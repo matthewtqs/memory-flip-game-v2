@@ -49,11 +49,13 @@ function createCards() {
           const img = document.createElement("img");
           img.src = 'assets/plavix-logo.png';
           img.classList.toggle("logo")
+          li.appendChild(img)
       } else {
+          const i = document.createElement("i")
           i.classList.toggle("fa-" + "bolt");
+          li.appendChild(i)
       }
       const deck = document.querySelector('.deck');
-      li.appendChild(img);
       deck.appendChild(li);
 
   }
