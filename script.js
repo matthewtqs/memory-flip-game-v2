@@ -125,7 +125,7 @@ function cardsMatch(card1, card2) {
 function cardsDontMatch(card1, card2) {
   card1.classList.toggle('no-match');
   card2.classList.toggle('no-match');
-  window.addEventListener("click", null);
+  window.removeEventListener("click", windowOnClick);
   setTimeout(function () {
       card1.classList.toggle('no-match');
       card2.classList.toggle('no-match');
