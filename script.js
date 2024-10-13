@@ -75,6 +75,7 @@ function initGame() {
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
           if (enableClick) {
+            enableClick = false;
             if (card[i] !== event.target) return;
             if (event.target.classList.contains("show")) return;
             if (isfirstClick) {
@@ -134,8 +135,10 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-      enableClick = true
   }, 300);
+  setTimeout(function () {
+      enableClick = true
+  }, 1000);
 }
 
 function win() {
