@@ -74,7 +74,8 @@ function initGame() {
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          if (enableClick) {
+          if (enableClick === true) {
+            console.log('disable click')
             enableClick = false;
             if (card[i] !== event.target) return;
             if (event.target.classList.contains("show")) return;
@@ -103,7 +104,6 @@ function addCard(card, cardHTML, testList, pos) {
   testList.push(cardHTML)
   testList.push(pos);
   if (testList.length === 6) {
-      enableClick = false 
       updateMoveCounter();
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
@@ -138,7 +138,7 @@ function cardsDontMatch(card1, card2) {
   }, 300);
   setTimeout(function () {
       enableClick = true
-  }, 1000);
+  }, 3000);
 }
 
 function win() {
