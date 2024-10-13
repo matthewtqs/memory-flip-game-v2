@@ -75,7 +75,7 @@ function initGame() {
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          console.log('start - ', testList)
+          console.log('start - ', cardTest)
           if (card[i] !== event.target) return;
           if (event.target.classList.contains("show")) return;
           if (isfirstClick) {
@@ -106,7 +106,7 @@ function addCard(card, cardHTML, testList, pos) {
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
   }
-  console.log('end - ', testList)
+  console.log('end - ', cardTest)
 }
 
 function testCards(card1, html1, x1, card2, html2, x2) {
