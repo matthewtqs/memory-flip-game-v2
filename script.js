@@ -102,6 +102,7 @@ function addCard(card, cardHTML, testList, pos) {
   testList.push(cardHTML)
   testList.push(pos);
   if (testList.length === 6) {
+      enableClick = false 
       updateMoveCounter();
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
@@ -128,7 +129,6 @@ function cardsMatch(card1, card2) {
 function cardsDontMatch(card1, card2) {
   card1.classList.toggle('no-match');
   card2.classList.toggle('no-match');
-  enableClick = false
   setTimeout(function () {
       card1.classList.toggle('no-match');
       card2.classList.toggle('no-match');
