@@ -43,15 +43,15 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
-      // const i = document.createElement("i");
-      // i.classList.toggle("fa");
-      if (card === "plavix") {
+      const i = document.createElement("i");
+      i.classList.toggle("fa");
+      
+    if (card === "plavix") {
           const img = document.createElement("img");
           img.src = 'assets/plavix-logo.png';
           img.classList.toggle("logo")
           li.appendChild(img)
       } else {
-          const i = document.createElement("i")
           i.classList.toggle("fa-" + "bolt");
           li.appendChild(i)
       }
