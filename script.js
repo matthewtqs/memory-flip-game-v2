@@ -48,6 +48,7 @@ function createCards() {
       if (card === "plavix") {
           const img = document.createElement("img");
           img.src = 'assets/plavix-logo.png';
+          img.width = '100%';
           i.appendChild(img)
       } else {
           i.classList.toggle("fa-" + "bolt");
