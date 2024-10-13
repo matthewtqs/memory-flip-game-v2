@@ -74,18 +74,20 @@ function initGame() {
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          if (cardTest.length === 3) {
-            enableClick = false;
-            console.log('disable click');
+          if (enableClick === true) {
+              if (cardTest.length === 3) {
+                enableClick = false;
+                console.log('disable click');
+              }
+              if (card[i] !== event.target) return;
+              if (event.target.classList.contains("show")) return;
+              if (isfirstClick) {
+                  timerID = setInterval(timer, 1000);
+                  isfirstClick = false;
+              }
+              showCard(event.target);
+              setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
           }
-          if (card[i] !== event.target) return;
-          if (event.target.classList.contains("show")) return;
-          if (isfirstClick) {
-              timerID = setInterval(timer, 1000);
-              isfirstClick = false;
-          }
-          showCard(event.target);
-          setTimeout(addCard, 450, shuffledCards[i], event.target, cardTest, i);
     }, false);
   }
 }
@@ -121,6 +123,7 @@ function testCards(card1, html1, x1, card2, html2, x2) {
 function cardsMatch(card1, card2) {
   card1.classList.add('match');
   card2.classList.add('match');
+  enableClick = true;
   match++;
   if (match === 8) {
       win();
