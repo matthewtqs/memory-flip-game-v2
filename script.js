@@ -29,8 +29,15 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
-let cards = ["diamond", "diamond", "plane", "plane", "anchor", "anchor", "bolt", "bolt", "leaf", "leaf"
-  , "bicycle", "bicycle", "cube", "cube", "bomb", "bomb"];
+let cards = 
+  ["diamond", "diamond", 
+   "plane", "plane", 
+   "anchor", "anchor", 
+   "bolt", "bolt", 
+   "leaf", "leaf", 
+   "bicycle", "bicycle", 
+   "cube", "cube", 
+   "bomb", "bomb"];
 
 let shuffledCards = shuffle(cards);
 
@@ -118,12 +125,13 @@ function cardsMatch(card1, card2) {
 function cardsDontMatch(card1, card2) {
   card1.classList.toggle('no-match');
   card2.classList.toggle('no-match');
+  window.addEventListener("click", null);
   setTimeout(function () {
       card1.classList.toggle('no-match');
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-
+      window.addEventListener("click", windowOnClick); 
   }, 300);
 }
 
