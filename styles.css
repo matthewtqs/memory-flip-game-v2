@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-  font-family: 'Concert One', 'Coda', san-serif, cursive;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -33,11 +33,6 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
-
-.stars {
-  display: flex;
-  list-style: none;
 }
 
 .restart {
