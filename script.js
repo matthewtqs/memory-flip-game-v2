@@ -111,6 +111,7 @@ function addCard(card, cardHTML, testList, pos) {
   }else{
       enableClick = true
       console.log('enabled click; match')
+  }
 }
 
 function testCards(card1, html1, x1, card2, html2, x2) {
