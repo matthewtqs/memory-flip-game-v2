@@ -67,20 +67,23 @@ let match = 0;
 let isfirstClick = true;
 let timerID;
 let isRestart = false;
+let enableClick = true;
 
 function initGame() {
   createCards();
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          if (card[i] !== event.target) return;
-          if (event.target.classList.contains("show")) return;
-          if (isfirstClick) {
-              timerID = setInterval(timer, 1000);
-              isfirstClick = false;
+          if (enableClick) {
+            if (card[i] !== event.target) return;
+            if (event.target.classList.contains("show")) return;
+            if (isfirstClick) {
+                timerID = setInterval(timer, 1000);
+                isfirstClick = false;
+            }
+            showCard(event.target);
+            setTimeout(addCard, 550, shuffledCards[i], event.target, cardTest, i);
           }
-          showCard(event.target);
-          setTimeout(addCard, 550, shuffledCards[i], event.target, cardTest, i);
       }, false);
   }
 }
@@ -125,13 +128,13 @@ function cardsMatch(card1, card2) {
 function cardsDontMatch(card1, card2) {
   card1.classList.toggle('no-match');
   card2.classList.toggle('no-match');
-  window.removeEventListener("click", windowOnClick);
+  enableClick = false
   setTimeout(function () {
       card1.classList.toggle('no-match');
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-      window.addEventListener("click", windowOnClick); 
+      enableClick = true
   }, 300);
 }
 
