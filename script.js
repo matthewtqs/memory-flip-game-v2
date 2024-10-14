@@ -43,14 +43,13 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
+
+      const img = document.createElement("img");
+      img.src = "assets/" + card + "-logo.png";
+      img.classList.toggle("logo")
+      // img.style.visbility = "hidden";
+      li.appendChild(img);
     
-      if (true) {
-          const img = document.createElement("img");
-          img.src = 'assets/plavix-logo.png';
-          img.classList.toggle("logo")
-          // img.style.visbility = "hidden";
-          li.appendChild(img);
-      }
       const deck = document.querySelector('.deck');
       deck.appendChild(li);
   }
