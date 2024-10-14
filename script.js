@@ -86,7 +86,7 @@ function initGame() {
 
 function showCard(card) {
   card.classList.add('show');
-  card.querySelector('img').classList.add('showlogo')
+  card.querySelector('img').style.visbility="visible";
 }
 
 function addCard(card, cardHTML, testList, pos) {
@@ -130,8 +130,8 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-      card1.querySelector('img').toggle('showlogo');
-      card2.querySelector('img').toggle('showlogo');
+      card1.querySelector('img').style.visbility="hidden";
+      card2.querySelector('img').style.visbility="hidden";
   }, 300);
 }
 
