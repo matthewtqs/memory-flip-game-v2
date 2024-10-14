@@ -44,6 +44,8 @@ body {
   object-fit: cover;
   width: 80%;
   transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .deck {
