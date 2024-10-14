@@ -43,8 +43,6 @@ body {
   min-width: 80%;
   object-fit: cover;
   width: 80%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
   visibility: hidden;
 }
