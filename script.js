@@ -43,12 +43,14 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
-
+      const div = document.createElement("div");
+      div.style.backfaceVisibility = "hidden";
       const img = document.createElement("img");
       img.src = "assets/" + card + "-logo.png";
-      img.classList.toggle("logo")
+      img.classList.toggle("logo");
       // img.style.visbility = "hidden";
-      li.appendChild(img);
+      div.appendChild(img);
+      li.appendChild(div);
     
       const deck = document.querySelector('.deck');
       deck.appendChild(li);
