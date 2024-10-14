@@ -50,6 +50,7 @@ function createCards() {
           const img = document.createElement("img");
           img.src = 'assets/plavix-logo.png';
           img.classList.toggle("logo")
+          img.style.visbility = "hidden";
           li.appendChild(img)
       }
       const deck = document.querySelector('.deck');
@@ -86,7 +87,7 @@ function initGame() {
 
 function showCard(card) {
   card.classList.add('show');
-  card.querySelector('img').style.visbility="visible";
+  card.querySelector('img').style.visibility = "visible";
 }
 
 function addCard(card, cardHTML, testList, pos) {
@@ -130,8 +131,8 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-      card1.querySelector('img').style.visbility="hidden";
-      card2.querySelector('img').style.visbility="hidden";
+      card1.querySelector('img').style.visibility = "hidden";
+      card2.querySelector('img').style.visibility = "hidden";
   }, 300);
 }
 
