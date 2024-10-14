@@ -43,7 +43,6 @@ body {
   min-width: 80%;
   object-fit: cover;
   width: 80%;
-  transform: rotateY(180deg);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -82,6 +81,7 @@ body {
   list-style: none;
   margin-top: 15px;
   cursor: pointer;
+  transform-style: preserve-3d;
 }
 
 .show {
