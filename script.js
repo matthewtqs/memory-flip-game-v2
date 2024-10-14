@@ -90,7 +90,7 @@ function initGame() {
 
 function showCard(card) {
   card.classList.add('show');
-
+  card.querySelector('img').classList.add('showlogo')
 }
 
 function addCard(card, cardHTML, testList, pos) {
@@ -134,7 +134,8 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-
+      card1.querySelector('img').toggle('showlogo');
+      card2.querySelector('img').toggle('showlogo');
   }, 300);
 }
 
@@ -152,22 +153,6 @@ function win() {
 function updateMoveCounter() {
   movesCounter++;
   moves.textContent = "Moves: " + movesCounter;
-  if (movesCounter === 13) {
-      let star = document.querySelector("#star3");
-      star.classList.toggle("fa-star");
-      star.classList.add("fa-star-o");
-      stars--;
-  } else if (movesCounter === 25) {
-      let star = document.querySelector("#star2");
-      star.classList.toggle("fa-star");
-      star.classList.add("fa-star-o");
-      stars--;
-  } else if (movesCounter === 35) {
-      let star = document.querySelector("#star1");
-      star.classList.toggle("fa-star");
-      star.classList.add("fa-star-o");
-      stars--;
-  }
 }
 
 let s = 0;
