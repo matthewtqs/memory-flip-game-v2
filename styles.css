@@ -48,6 +48,10 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
+.showlogo {
+  transform: rotateY(180deg);
+}
+
 .deck {
   background: linear-gradient(135deg, rgba(207, 197, 229, 1) 0%, rgba(163, 154, 204, 1) 36%, rgba(79, 71, 169, 1) 100%);
   margin: 0;
@@ -81,7 +85,7 @@ body {
 }
 
 .show {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
   transition: 0.5s;
   background: skyblue;
   font-size: 33px;
