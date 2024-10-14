@@ -43,14 +43,10 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
-      const div = document.createElement("div");
-      div.style.backfaceVisibility = "hidden";
       const img = document.createElement("img");
       img.src = "assets/" + card + "-logo.png";
       img.classList.toggle("logo");
-      // img.style.visbility = "hidden";
-      div.appendChild(img);
-      li.appendChild(div);
+      li.appendChild(img);
     
       const deck = document.querySelector('.deck');
       deck.appendChild(li);
@@ -86,8 +82,7 @@ function initGame() {
 
 function showCard(card) {
   card.classList.add('show');
-  card.querySelector('img').classList.toggle("showlogo");
-  // card.querySelector('img').style.visibility = "visible";
+  // card.querySelector('img').classList.toggle("showlogo");
 }
 
 function addCard(card, cardHTML, testList, pos) {
@@ -133,8 +128,8 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('show');
       // card1.querySelector('img').style.visibility = "hidden";
       // card2.querySelector('img').style.visibility = "hidden";
-      card1.querySelector('img').classList.toggle("showlogo");
-      card2.querySelector('img').classList.toggle("showlogo");
+      // card1.querySelector('img').classList.toggle("showlogo");
+      // card2.querySelector('img').classList.toggle("showlogo");
   }, 300);
 }
 
