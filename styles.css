@@ -40,13 +40,19 @@ body {
 }
 
 .logo {
-  min-width: 80%;
+  min-width: 0%;
   object-fit: cover;
-  width: 80%;
+  width: 0%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
 }
+
+.showlogo {
+  min-width: 80%;
+  width: 80%;
+}
+
 .deck {
   background: linear-gradient(135deg, rgba(207, 197, 229, 1) 0%, rgba(163, 154, 204, 1) 36%, rgba(79, 71, 169, 1) 100%);
   margin: 0;
@@ -77,8 +83,6 @@ body {
   list-style: none;
   margin-top: 15px;
   cursor: pointer;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .show {
