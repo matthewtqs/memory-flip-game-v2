@@ -43,9 +43,9 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
-      const i = document.createElement("i");
-      i.classList.toggle("fa");
-      
+      // const i = document.createElement("i");
+      // i.classList.toggle("fa");
+    
       if (true) {
           const img = document.createElement("img");
           img.src = 'assets/plavix-logo.png';
