@@ -54,7 +54,7 @@ function createCards() {
 }
 
 const ul = document.querySelector('.deck');
-let moves = document.querySelector(".moves");
+let moves = document.querySelector('.moves');
 let movesCounter = 0;
 let match = 0;
 let isfirstClick = true;
@@ -69,7 +69,7 @@ function initGame() {
           if (card[i] !== event.target) return;
           if (event.target.classList.contains("show")) return;
           if (isfirstClick) {
-              timerID = setInterval(timer, 1000);
+              timerID = setInterval(timer, 10);
               isfirstClick = false;
           }
           showCard(event.target);
@@ -137,18 +137,13 @@ function updateMoveCounter() {
   moves.textContent = "Moves: " + movesCounter;
 }
 
+let ms = 0;
 let s = 0;
-let m = 0;
 function timer() {
-  ++s;
-  m = Math.floor(s / 60);
+  ++ms;
+  s = Math.floor(ms / 100);
   let timer = document.querySelector(".timer");
-  if (s % 60 < 10) {
-      timer.textContent = "Elapsed Time: " + m + ":0" + s % 60;
-  } else {
-      timer.textContent = "Elapsed Time: " + m + ":" + s % 60;
-  }
-
+  timer.textContent = "Elapsed Time: " + s + "." + (ms % 100) + "s";
 }
 
 let restart = document.querySelector(".navLogo:nth-child(1)");
@@ -157,19 +152,19 @@ function restartGame() {
   clearInterval(timerID);
   movesCounter = 0;
   match = 0;
+  ms = 0;
   s = 0;
-  m = 0;
   isfirstClick = true;
   isRestart = true;
   const deck = document.querySelector('.deck');
-  var elements = deck.getElementsByClassName("card");
+  var elements = deck.getElementsByClassName('card');
 
   while (elements[0]) {
       elements[0].parentNode.removeChild(elements[0]);
   }
   shuffledCards = shuffle(cards);
   let timer = document.querySelector(".timer");
-  timer.textContent = "Elapsed Time: 0:00";
+  timer.textContent = "Elapsed Time: 00.00s";
   moves.textContent = "Moves: " + movesCounter;
   initGame();
 }
@@ -177,7 +172,8 @@ function restartGame() {
 let home = document.querySelector(".navLogo:nth-child(2)");
 home.addEventListener("click", restartGame, false);
 
-const newGameButton = document.querySelector(".new-game");
+let btn = document.querySelectorAll(".btn");
+console.log(btn)
 newGameButton.addEventListener("click", newGame);
 function newGame() {
   toggleModal();
