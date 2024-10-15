@@ -172,8 +172,8 @@ function restartGame() {
 let home = document.querySelector(".navLogo:nth-child(2)");
 home.addEventListener("click", restartGame, false);
 
-let btn = document.querySelectorAll(".btn");
-console.log(btn)
+let newGameButton = document.querySelectorAll(".new-game");
+console.log(newGameButton)
 newGameButton.addEventListener("click", newGame);
 function newGame() {
   toggleModal();
