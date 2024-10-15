@@ -151,7 +151,7 @@ function timer() {
 
 }
 
-let restart = document.querySelector(".restart");
+let restart = document.querySelector(".navLogo:nth-child(1)");
 restart.addEventListener("click", restartGame, false);
 function restartGame() {
   clearInterval(timerID);
@@ -173,6 +173,9 @@ function restartGame() {
   moves.textContent = "Moves: " + movesCounter;
   initGame();
 }
+
+let home = document.querySelector(".navLogo:nth-child(2)");
+home.addEventListener("click", restartGame, false);
 
 const newGameButton = document.querySelector(".new-game");
 newGameButton.addEventListener("click", newGame);
