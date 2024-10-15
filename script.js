@@ -56,7 +56,6 @@ function createCards() {
 const ul = document.querySelector('.deck');
 let moves = document.querySelector(".moves");
 let movesCounter = 0;
-let stars = 3;
 let match = 0;
 let isfirstClick = true;
 let timerID;
@@ -67,7 +66,6 @@ function initGame() {
   const card = document.querySelectorAll('.card');
   for (let i = 0; i < card.length; i++) {
       card[i].addEventListener("click", function (event) {
-          console.log('start - ', cardTest)
           if (card[i] !== event.target) return;
           if (event.target.classList.contains("show")) return;
           if (isfirstClick) {
@@ -82,7 +80,6 @@ function initGame() {
 
 function showCard(card) {
   card.classList.add('show');
-  // card.querySelector('img').classList.toggle("showlogo");
 }
 
 function addCard(card, cardHTML, testList, pos) {
@@ -98,7 +95,6 @@ function addCard(card, cardHTML, testList, pos) {
       testCards(testList[0], testList[1], testList[2], testList[3], testList[4], testList[5]);
       testList.length = 0;
   }
-  console.log('end - ', cardTest)
 }
 
 function testCards(card1, html1, x1, card2, html2, x2) {
@@ -113,7 +109,7 @@ function cardsMatch(card1, card2) {
   card1.classList.add('match');
   card2.classList.add('match');
   match++;
-  if (match === 8) {
+  if (match === 6) {
       win();
   }
 }
@@ -126,10 +122,6 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-      // card1.querySelector('img').style.visibility = "hidden";
-      // card2.querySelector('img').style.visibility = "hidden";
-      // card1.querySelector('img').classList.toggle("showlogo");
-      // card2.querySelector('img').classList.toggle("showlogo");
   }, 300);
 }
 
@@ -137,11 +129,7 @@ function win() {
   clearInterval(timerID);
   toggleModal();
   const stats = document.querySelector(".stats");
-  if (s % 60 < 10) {
-      stats.textContent = "You won with: " + stars + " stars in " + movesCounter + " moves with time: " + m + ":0" + s % 60;
-  } else {
-      stats.textContent = "You won with: " + stars + " stars in " + movesCounter + " moves with time: " + m + ":" + s % 60;
-  }
+  stats.textContent = "You won in " + movesCounter + " moves with time: " + m + ":0" + s % 60;
 }
 
 function updateMoveCounter() {
@@ -183,27 +171,7 @@ function restartGame() {
   let timer = document.querySelector(".timer");
   timer.textContent = "Elapsed Time: 0:00";
   moves.textContent = "Moves: " + movesCounter;
-
-  resetStars();
   initGame();
-}
-
-function resetStars() {
-  stars = 3;
-  let star = document.querySelector("#star3");
-  star.classList.remove("fa-star");
-  star.classList.remove("fa-star-o");
-  star.classList.add("fa-star");
-
-  star = document.querySelector("#star2");
-  star.classList.remove("fa-star");
-  star.classList.remove("fa-star-o");
-  star.classList.add("fa-star");
-
-  star = document.querySelector("#star1");
-  star.classList.remove("fa-star");
-  star.classList.remove("fa-star-o");
-  star.classList.add("fa-star");
 }
 
 const newGameButton = document.querySelector(".new-game");
