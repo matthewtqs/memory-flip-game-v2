@@ -200,8 +200,8 @@ body {
   margin-top: 30px;
 }
 
-.new-game {
-  background: rgb(75, 189, 0);
+.btn {
+  background: #7a00e6;
   color: #fff;
   border: 0;
   padding: 1em 2em;
