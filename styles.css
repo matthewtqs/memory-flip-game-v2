@@ -25,9 +25,10 @@ body {
   background: white;
 }
 
-.h1 {
+.titleText {
   font-family: font-family: "Honk", serif;
   font-size: 3em;
+  display: block;
 }
 
 .score-table {
