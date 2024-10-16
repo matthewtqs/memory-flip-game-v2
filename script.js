@@ -14,6 +14,9 @@ function shuffle(array) {
 
 const modal = document.querySelector(".modal");
 const closeButton = document.querySelector(".close-button");
+const homepage = document.querySelector(".homepage");
+const scoreTable = document.querySelector(".score-table");
+const main = document.querySelector("main");
 
 function toggleModal() {
   modal.classList.toggle("show-modal");
@@ -129,7 +132,7 @@ function win() {
   clearInterval(timerID);
   toggleModal();
   const stats = document.querySelector(".stats");
-  stats.textContent = "You won in " + movesCounter + " moves with time: " + m + ":0" + s % 60;
+  stats.textContent = "You won in " + movesCounter + " moves with time: " + s + "." + (ms % 100) + "s";
 }
 
 function updateMoveCounter() {
@@ -146,7 +149,10 @@ function timer() {
   timer.textContent = "Elapsed Time: " + s + "." + (ms % 100) + "s";
 }
 
-let restart = document.querySelector(".navLogo:nth-child(1)");
+let home = document.querySelector(".navLogo.home");
+home.addEventListener("click", restartGame, false);
+
+let restart = document.querySelector(".navLogo.repeat");
 restart.addEventListener("click", restartGame, false);
 function restartGame() {
   clearInterval(timerID);
@@ -169,14 +175,13 @@ function restartGame() {
   initGame();
 }
 
-let home = document.querySelector(".navLogo:nth-child(2)");
-home.addEventListener("click", restartGame, false);
-
-let newGameButton = document.querySelectorAll(".new-game");
-console.log(newGameButton)
+let newGameButton = document.querySelector(".btn.new-game");
 newGameButton.addEventListener("click", newGame);
 function newGame() {
-  toggleModal();
+  modal.classList.remove('show-modal');
+  homepage.classList.add('hideElements');
+  scoreTable.classList.remove('hideElements');
+  main.classList.remove('hideElements');
   restartGame();
 }
 
