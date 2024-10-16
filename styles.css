@@ -11,6 +11,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  align-content: center;
 }
 
 body {
@@ -40,7 +41,8 @@ body {
 
 .titleText {
   font-family: "Honk", serif;
-  font-size: 5em;
+  font-size: 7em;
+  text-align: center;
 }
 
 .homepage {
