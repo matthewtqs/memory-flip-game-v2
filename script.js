@@ -150,7 +150,13 @@ function timer() {
 }
 
 let home = document.querySelector(".navLogo.home");
-home.addEventListener("click", restartGame, false);
+home.addEventListener("click", backToHome, false);
+function backToHome() {
+  modal.classList.remove('show-modal');
+  homepage.classList.remove('hideElements');
+  scoreTable.classList.add('hideElements');
+  main.classList.add('hideElements');
+}
 
 let restart = document.querySelector(".navLogo.repeat");
 restart.addEventListener("click", restartGame, false);
@@ -175,8 +181,10 @@ function restartGame() {
   initGame();
 }
 
-let newGameButton = document.querySelector(".btn.new-game");
-newGameButton.addEventListener("click", newGame);
+let newGameButtons = document.querySelectorAll(".btn.new-game");
+for (const eachBtn in newGameButtons){
+  eachBtn.addEventListener("click", newGame);
+}
 function newGame() {
   modal.classList.remove('show-modal');
   homepage.classList.add('hideElements');
