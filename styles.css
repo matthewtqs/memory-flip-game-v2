@@ -27,8 +27,9 @@ body {
 
 .header {
   display: block;
-  width: 630px;
+  width: 612px;
   align-items: center;
+  text-align: center;
 }
 
 .headerImg {
