@@ -13,10 +13,13 @@ function shuffle(array) {
 }
 
 const modal = document.querySelector(".modal");
+const hsModal = document.querySelector(".hs-modal");
 const closeButton = document.querySelector(".close-button");
+const hsCloseButton = document.querySelector(".hs-close-button");
 const homepage = document.querySelector(".homepage");
 const scoreTable = document.querySelector(".score-table");
 const main = document.querySelector("main");
+let scoreboard = []
 
 function toggleModal() {
   modal.classList.toggle("show-modal");
@@ -24,11 +27,14 @@ function toggleModal() {
 
 function windowOnClick(event) {
   if (event.target === modal) {
-      toggleModal();
+    toggleModal();
+  } else if (event.target === hsModal) {
+    hsModal.classList.remove("show-modal")
   }
 }
 
 closeButton.addEventListener("click", toggleModal);
+hsCloseButton.addEventListener("click", () => hsModal.classList.remove("show-modal"))
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
@@ -131,6 +137,9 @@ function cardsDontMatch(card1, card2) {
 function win() {
   clearInterval(timerID);
   toggleModal();
+  newGameButton2.classList.add("hideElements")
+  highScoreBtn2.classList.add("hideElements")
+  submitBtn.classList.remove("hideElements")
   const stats = document.querySelector(".stats");
   stats.textContent = "You won in " + movesCounter + " moves with time: " + s + "." + (ms % 100) + "s";
 }
@@ -149,7 +158,7 @@ function timer() {
   timer.textContent = "Elapsed Time: " + s + "." + (ms % 100) + "s";
 }
 
-let home = document.querySelector(".navLogo.home");
+let home = document.querySelector("#home-nav");
 home.addEventListener("click", backToHome, false);
 function backToHome() {
   modal.classList.remove('show-modal');
@@ -158,7 +167,7 @@ function backToHome() {
   main.classList.add('hideElements');
 }
 
-let restart = document.querySelector(".navLogo.repeat");
+let restart = document.querySelector("#repeat-nav");
 restart.addEventListener("click", restartGame, false);
 function restartGame() {
   clearInterval(timerID);
@@ -176,15 +185,17 @@ function restartGame() {
   }
   shuffledCards = shuffle(cards);
   let timer = document.querySelector(".timer");
-  timer.textContent = "Elapsed Time: 00.00s";
+  timer.textContent = "Elapsed Time: 0.00s";
   moves.textContent = "Moves: " + movesCounter;
   initGame();
 }
 
-let newGameButtons = document.querySelectorAll(".btn.new-game");
-for (const eachBtn in newGameButtons){
-  eachBtn.addEventListener("click", newGame);
-}
+let newGameButton1 = document.querySelector("#new-game-btn");
+newGameButton1.addEventListener("click", newGame);
+
+let newGameButton2 = document.querySelector("#new-game-btn2");
+newGameButton2.addEventListener("click", newGame);
+
 function newGame() {
   modal.classList.remove('show-modal');
   homepage.classList.add('hideElements');
@@ -193,4 +204,33 @@ function newGame() {
   restartGame();
 }
 
+let submitBtn = document.querySelector("#submitBtn")
+submitBtn.addEventListener("click", () => {
+  let nameInput = document.querySelector("#name-input")
+  localStorage.setItem(nameInput.value, [movesCounter, ms])
+  newGameButton2.classList.remove("hideElements")
+  highScoreBtn2.classList.remove("hideElements")
+  submitBtn.classList.add("hideElements")
+})
+
+let highScoreBtn1 = document.querySelector("#high-score-btn")
+let highScoreBtn2 = document.querySelector("#high-score-btn2")
+highScoreBtn1.addEventListener("click", showHighscore)
+highScoreBtn2.addEventListener("click", showHighscore)
+function showHighscore() {
+  hsModal.classList.add("show-modal")
+}
+
+function updateHighscore(){
+  scoreboard = []
+  keys = Object.keys(localStorage)
+  for(i=0; i<keys.length; i++){
+    scoreboard.push([keys[i],...localStorage.getItem(keys[i]).split(',')])
+  }
+  scoreboard.sort((a,b) => {
+    return (a[2] - b[2])
+  })
+}
+
 initGame();
+updateHighscore();

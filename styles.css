@@ -31,6 +31,7 @@ body {
   width: 612px;
   align-items: center;
   text-align: center;
+  position: all 2s linear;
 }
 
 .headerImg {
@@ -141,7 +142,7 @@ body {
   transition: 0.1s;
 }
 
-.modal {
+.modal, .hs-modal {
   z-index: 1;
   position: fixed;
   left: 0;
@@ -155,7 +156,7 @@ body {
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.modal-content {
+.modal-content, .hs-modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -167,7 +168,7 @@ body {
   text-align: center;
 }
 
-.close-button {
+.close-button, .hs-close-button {
   float: right;
   width: 1.5rem;
   line-height: 1.5rem;

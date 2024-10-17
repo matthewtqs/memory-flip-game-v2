@@ -21,18 +21,18 @@
         </header>
 
         <section class="homepage">
-            <button class="btn new-game">New Game</button>
-            <button class="btn high-score">High Score</button>
+            <button id="new-game-btn" class="btn">New Game</button>
+            <button id="high-score-btn" class="btn">High Score</button>
         </section>
         
         <section class="score-table hideElements">
             <span class="moves">Moves: 0</span>
             <span> | </span>
             <span class="timer">Elapsed Time: 0:00</span>
-            <div class="navLogo home">
+            <div id="home-nav" class="navLogo">
                 <i class="fa fa-home"></i>
             </div>
-            <div class="navLogo repeat">
+            <div id="repeat-nav" class="navLogo">
                 <i class="fa fa-repeat"></i>
             </div>
         </section>
@@ -47,12 +47,28 @@
                 <i class="fa fa-check-circle tick"></i>
                 <h1 class="modal-heading">Congratulations! You Won!!</h1>
                 <h3 class="stats"></h3>
-                <label for="nameInput">Name: </label>
-                <input type="text" id="nameInput">
-                <button class="btn new-game">Play Again!</button>
-                <button class="btn high-score">High Score</button>
+                <label for="name-input">Name: </label>
+                <input type="text" id="name-input"><br>
+                <button id="submitBtn" class="btn">Submit</button>
+                <button id="new-game-btn2" class="btn hideElements">Play Again!</button>
+                <button id="high-score-btn2" class="btn hideElements">High Score</button>
             </div>
         </div>
+
+        <div class="hs-modal">
+            <div class="hs-modal-content">
+                <span class="hs-close-button">x</span>
+                <h1 class="modal-heading">High Score</h1>
+                <table id="hs-table">
+                    <tr>
+                        <td>1</td>
+                        <td>Matthew</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>
