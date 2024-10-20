@@ -17,18 +17,64 @@
     <div class="container">
         <header class="header">
             <img class="headerImg" src="assets/sanofi-logo.png">
-            <span class="titleText">20 SECOND CHALLENGE</span>
+            <span class="titleText">20 SECONDS CHALLENGE</span>
         </header>
 
-        <section class="homepage">
+        <section class="homepage hideElements">
             <button id="new-game-btn" class="btn">New Game</button>
-            <button id="high-score-btn" class="btn">High Score</button>
+            <!-- <button id="high-score-btn" class="btn">High Score</button> -->
+            <span id="table-title">HIGH SCORE</span>
+            <table id="hs-table">
+                <tr class="rowt">
+                    <td>Rank</td>
+                    <td class="nameCol">Name</td>
+                    <td colspan="2">Timing</td>
+                    <td>Moves</td>
+                </tr>
+                <tr class="row1">
+                    <td>1</td>
+                    <td class="nameCol"></td>
+                    <td><i class="fa fa-clock-o"></i></td>
+                    <td>123</td>
+                    <td>123</td>
+                </tr>
+                <tr class="row2">
+                    <td>2</td>
+                    <td class="nameCol"></td>
+                    <td><i class="fa fa-clock-o"></i></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row3">
+                    <td>3</td>
+                    <td class="nameCol"></td>
+                    <td><i class="fa fa-clock-o"></i></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row4">
+                    <td>4</td>
+                    <td class="nameCol"></td>
+                    <td><i class="fa fa-clock-o"></i></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row5">
+                    <td>5</td>
+                    <td class="nameCol"></td>
+                    <td><i class="fa fa-clock-o"></i></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </section>
         
-        <section class="score-table hideElements">
-            <span class="moves">Moves: 0</span>
-            <span> | </span>
-            <span class="timer">Elapsed Time: 0:00</span>
+        <section class="score-table ">
+            <span class="moves">Moves:</span>
+            <span id="movesCount">0</span>
+            <span>|</span>
+            <span class="timerLabel">Time: </span>
+            <span class="timer">00:00s</span>
             <div id="home-nav" class="navLogo">
                 <i class="fa fa-home"></i>
             </div>
@@ -37,7 +83,7 @@
             </div>
         </section>
 
-        <main class="hideElements">
+        <main class="">
             <ul class="deck"></ul>
         </main>
 
@@ -51,7 +97,7 @@
                 <input type="text" id="name-input"><br>
                 <button id="submitBtn" class="btn">Submit</button>
                 <button id="new-game-btn2" class="btn hideElements">Play Again!</button>
-                <button id="high-score-btn2" class="btn hideElements">High Score</button>
+                <button id="back-to-home" class="btn hideElements">Back to Home</button>
             </div>
         </div>
 
@@ -59,13 +105,6 @@
             <div class="hs-modal-content">
                 <span class="hs-close-button">x</span>
                 <h1 class="modal-heading">High Score</h1>
-                <table id="hs-table">
-                    <tr>
-                        <td>1</td>
-                        <td>Matthew</td>
-                        <td></td>
-                    </tr>
-                </table>
             </div>
         </div>
 

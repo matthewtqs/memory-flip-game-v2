@@ -63,7 +63,7 @@ function createCards() {
 }
 
 const ul = document.querySelector('.deck');
-let moves = document.querySelector('.moves');
+let moves = document.querySelector('#movesCount');
 let movesCounter = 0;
 let match = 0;
 let isfirstClick = true;
@@ -138,7 +138,7 @@ function win() {
   clearInterval(timerID);
   toggleModal();
   newGameButton2.classList.add("hideElements")
-  highScoreBtn2.classList.add("hideElements")
+  backToHomeBtn.classList.add("hideElements")
   submitBtn.classList.remove("hideElements")
   const stats = document.querySelector(".stats");
   stats.textContent = "You won in " + movesCounter + " moves with time: " + s + "." + (ms % 100) + "s";
@@ -146,7 +146,7 @@ function win() {
 
 function updateMoveCounter() {
   movesCounter++;
-  moves.textContent = "Moves: " + movesCounter;
+  moves.textContent = movesCounter;
 }
 
 let ms = 0;
@@ -155,7 +155,7 @@ function timer() {
   ++ms;
   s = Math.floor(ms / 100);
   let timer = document.querySelector(".timer");
-  timer.textContent = "Elapsed Time: " + s + "." + (ms % 100) + "s";
+    timer.textContent = s + "." + (ms % 100) + "s";
 }
 
 let home = document.querySelector("#home-nav");
@@ -164,6 +164,7 @@ function backToHome() {
   modal.classList.remove('show-modal');
   homepage.classList.remove('hideElements');
   scoreTable.classList.add('hideElements');
+  updateHighscoreTable();
   main.classList.add('hideElements');
 }
 
@@ -185,8 +186,8 @@ function restartGame() {
   }
   shuffledCards = shuffle(cards);
   let timer = document.querySelector(".timer");
-  timer.textContent = "Elapsed Time: 0.00s";
-  moves.textContent = "Moves: " + movesCounter;
+  timer.textContent = "0.00s";
+  moves.textContent = movesCounter;
   initGame();
 }
 
@@ -209,16 +210,22 @@ submitBtn.addEventListener("click", () => {
   let nameInput = document.querySelector("#name-input")
   localStorage.setItem(nameInput.value, [movesCounter, ms])
   newGameButton2.classList.remove("hideElements")
-  highScoreBtn2.classList.remove("hideElements")
+  backToHomeBtn.classList.remove("hideElements")
   submitBtn.classList.add("hideElements")
 })
 
-let highScoreBtn1 = document.querySelector("#high-score-btn")
-let highScoreBtn2 = document.querySelector("#high-score-btn2")
-highScoreBtn1.addEventListener("click", showHighscore)
-highScoreBtn2.addEventListener("click", showHighscore)
-function showHighscore() {
-  hsModal.classList.add("show-modal")
+let backToHomeBtn = document.querySelector("#back-to-home")
+backToHomeBtn.addEventListener("click", backToHome)
+
+function updateHighscoreTable(){
+  updateHighscore()
+  for(i=1; i<=5; i++){
+    rowHTML = document.querySelector(`.row${i}`)
+    rowHTML.children[1].innerHTML = scoreboard[i-1][0]
+    rowHTML.children[4].innerHTML = scoreboard[i-1][1]
+    let time = scoreboard[i-1][2]/100
+    rowHTML.children[3].innerHTML = time.toFixed(2) + 's'
+  }
 }
 
 function updateHighscore(){
@@ -230,7 +237,8 @@ function updateHighscore(){
   scoreboard.sort((a,b) => {
     return (a[2] - b[2])
   })
+  console.log(scoreboard)
 }
 
 initGame();
-updateHighscore();
+updateHighscoreTable();
