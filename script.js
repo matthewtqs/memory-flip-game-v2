@@ -242,5 +242,10 @@ function updateHighscore(){
   })
 }
 
+function clearLocalStorage(){
+  localStorage.clear
+}
+
+clearLocalStorage()
 initGame();
 updateHighscoreTable();
