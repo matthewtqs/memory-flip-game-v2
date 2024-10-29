@@ -34,7 +34,7 @@ function windowOnClick(event) {
 }
 
 closeButton.addEventListener("click", toggleModal);
-hsCloseButton.addEventListener("click", () => hsModal.classList.remove("show-modal"))
+// hsCloseButton.addEventListener("click", () => hsModal.classList.remove("show-modal"))
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
@@ -221,10 +221,13 @@ function updateHighscoreTable(){
   updateHighscore()
   for(i=1; i<=5; i++){
     rowHTML = document.querySelector(`.row${i}`)
-    rowHTML.children[1].innerHTML = scoreboard[i-1][0]
-    rowHTML.children[4].innerHTML = scoreboard[i-1][1]
-    let time = scoreboard[i-1][2]/100
-    rowHTML.children[3].innerHTML = time.toFixed(2) + 's'
+    if(scoreboard[i-1]){
+      rowHTML.children[1].innerHTML = scoreboard[i-1][0]
+      rowHTML.children[4].innerHTML = scoreboard[i-1][1]
+      let time = scoreboard[i-1][2]/100
+      rowHTML.children[2].children[0].classList.remove("hideElements")
+      rowHTML.children[3].innerHTML = time.toFixed(2) + 's'
+    }
   }
 }
 
@@ -237,7 +240,6 @@ function updateHighscore(){
   scoreboard.sort((a,b) => {
     return (a[2] - b[2])
   })
-  console.log(scoreboard)
 }
 
 initGame();
