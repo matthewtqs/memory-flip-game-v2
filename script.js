@@ -212,6 +212,7 @@ submitBtn.addEventListener("click", () => {
   newGameButton2.classList.remove("hideElements")
   backToHomeBtn.classList.remove("hideElements")
   submitBtn.classList.add("hideElements")
+  nameInput.classList.add("hideElements")
 })
 
 let backToHomeBtn = document.querySelector("#back-to-home")
@@ -246,6 +247,6 @@ function clearLocalStorage(){
   localStorage.clear
 }
 
-clearLocalStorage()
+// clearLocalStorage()
 initGame();
 updateHighscoreTable();
