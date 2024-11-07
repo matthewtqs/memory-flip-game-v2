@@ -48,7 +48,7 @@ body {
 
 .titleImg {
   min-width: 70%;
-  width: 70%
+  width: 70%;
   object-fit: cover;
   align-self: center;
 }
