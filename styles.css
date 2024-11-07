@@ -33,8 +33,8 @@ body {
 }
 
 .headerImg {
-  min-width: 70%;
-  width: 70%;
+  min-width: 80%;
+  width: 80%;
   object-fit: cover;
   margin-bottom: 1em;
   align-self: center;
@@ -47,10 +47,11 @@ body {
 }
 
 .titleImg {
-  min-width: 70%;
-  width: 70%;
+  min-width: 80%;
+  width: 80%;
   object-fit: cover;
   align-self: center;
+  margin-top: 10px;
 }
 
 .btn {
