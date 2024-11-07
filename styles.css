@@ -59,7 +59,7 @@ body {
 }
 
 #new-game-btn {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 #submitBtn, #new-game-btn2, #back-to-home {
@@ -266,7 +266,8 @@ body {
   border-radius: 30px;
   padding: 20px;
   border-collapse: separate;
-  border-spacing: 0 15px
+  border-spacing: 0 15px;
+  width: 70%;
 }
 
 tr {
