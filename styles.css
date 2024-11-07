@@ -42,7 +42,7 @@ body {
 
 .titleText {
   font-family: "Honk", serif;
-  font-size: 8em;
+  font-size: 6em;
   text-align: center;
 }
 
@@ -248,7 +248,7 @@ body {
 #table-title {
   margin-top: 50px;
   margin-bottom: 10px;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: bold;
   border: solid 2px black;
   position: relative;
@@ -273,7 +273,7 @@ body {
 tr {
   background-color: #7a00e6;
   color: white;
-  font-size: 32px;
+  font-size: 18px;
   text-align: center;
   border-spacing: 20px;
   box-shadow: 10px 5px 10px gray;
