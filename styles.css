@@ -46,6 +46,13 @@ body {
   text-align: center;
 }
 
+.titleImg {
+  min-width: 70%;
+  width: 70%
+  object-fit: cover;
+  align-self: center;
+}
+
 .btn {
   background: #7a00e6;
   color: #fff;
