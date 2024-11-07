@@ -246,9 +246,9 @@ body {
 }
 
 #table-title {
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 10px;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
   border: solid 2px black;
   position: relative;
@@ -267,7 +267,6 @@ body {
   padding: 20px;
   border-collapse: separate;
   border-spacing: 0 15px;
-  width: 70%;
 }
 
 tr {
