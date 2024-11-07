@@ -207,12 +207,12 @@ function newGame() {
 
 let submitBtn = document.querySelector("#submitBtn")
 submitBtn.addEventListener("click", () => {
-  let nameInput = document.querySelector("#name-input")
+  let nameInputDiv = document.querySelector("#name-input-div")
   localStorage.setItem(nameInput.value, [movesCounter, ms])
   newGameButton2.classList.remove("hideElements")
   backToHomeBtn.classList.remove("hideElements")
   submitBtn.classList.add("hideElements")
-  nameInput.classList.add("hideElements")
+  nameInputDiv.classList.add("hideElements")
 })
 
 let backToHomeBtn = document.querySelector("#back-to-home")
