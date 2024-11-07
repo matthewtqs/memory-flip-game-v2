@@ -68,7 +68,7 @@ body {
 
 .homepage {
   display: flex;
-  margin: 1.2em;
+  margin: 1em;
   flex-direction: column;
   align-items: center;
 }
@@ -146,8 +146,8 @@ body {
 .card {
   transform: rotateY(180deg);
   transition: 0.5s;
-  width: 30%;
-  aspect-ratio: 1/1;
+  width: 185px;
+  height: 185px;
 /*   background: linear-gradient(to bottom, rgba(69, 72, 77, 1) 0%, rgba(0, 0, 0, 1) 100%); */
   background: #7a00e6;
   box-shadow: 5px 5px 24px -3px rgba(0, 0, 0, 0.75);
@@ -246,7 +246,7 @@ body {
 }
 
 #table-title {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 10px;
   font-size: 28px;
   font-weight: bold;
