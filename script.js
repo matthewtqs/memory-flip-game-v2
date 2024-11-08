@@ -140,6 +140,7 @@ function win() {
   newGameButton2.classList.add("hideElements")
   backToHomeBtn.classList.add("hideElements")
   submitBtn.classList.remove("hideElements")
+  nameInputDiv.classList.remove("hideElements")
   const stats = document.querySelector(".stats");
   stats.textContent = "You won in " + movesCounter + " moves with time: " + s + "." + (ms % 100) + "s";
 }
