@@ -1,6 +1,6 @@
 # Memory Flip Game
 
-Hosted on Github Pages: [Memory Flip Game](https://matthewtqs.github.io/memoryflipgame/)
+Hosted on Github Pages: [Memory Flip Game](https://matthewtqs.github.io/memory-flip-game/)
 
 1. **Objective:** Flip the tiles to match pairs of logos.
 2. **Scoring:** Players receive a score based on the number of moves taken to match all pairs and the time taken to complete the entire puzzle. The faster the time, the better the high score.
