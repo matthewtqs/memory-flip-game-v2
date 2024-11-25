@@ -137,7 +137,7 @@ body {
 /*   border-color: white;
   border-width: 5px; */
   margin: 0;
-  width: 70%;
+  width: 550px;
 /*   min-height: 500px; */
 /*   box-shadow: 10px 9px 31px 1px rgba(0, 0, 0, 0.75); */
 /*   border-radius: 10px; */
@@ -347,35 +347,3 @@ td {
   width: 50px;
   margin-left: 10px;
 }
-
-/* @media screen and (max-width: 600px) {
-  .deck {
-      width: 350px;
-      min-height: 280px;
-  }
-  .card {
-      width: 68px;
-      height: 68px;
-  }
-  .show{
-      font-size: 30px;
-  }
-  .modal-content {
-      width: 15rem;
-  }
-  .tick {
-      color: rgba(0, 218, 29, 0.767);
-      font-size: 45px;
-      margin-left: 25px;
-  }
-  h1 {
-      font-size: 20px;
-  }
-  h3 {
-      font-size: 16px;
-  }
-  .score-table {
-      width: 320px;
-  }
-}
- */
