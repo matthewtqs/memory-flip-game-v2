@@ -16,6 +16,7 @@ const modal = document.querySelector(".modal");
 const hsModal = document.querySelector(".hs-modal");
 const closeButton = document.querySelector(".close-button");
 const hsCloseButton = document.querySelector(".hs-close-button");
+const header = document.querySelector(".header");
 const homepage = document.querySelector(".homepage");
 const scoreTable = document.querySelector(".score-table");
 const main = document.querySelector("main");
@@ -39,12 +40,14 @@ window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
 let cards = 
-  ["sanofi", "sanofi", 
-  "plavix", "plavix", 
-  "aprovel", "aprovel", 
-  "coaprovel", "coaprovel", 
-  "coplavix", "coplavix", 
-  "aprovasc", "aprovasc"];
+  [
+    "alogo", "alogo", "alogo",
+    "aans-1", "aans-2", "aans-3",
+    "tlogo", "tlogo", "tlogo",
+    "tans-1", "tans-2", "tans-3",
+    "plogo", "plogo", "plogo",
+    "pans-1", "pans-2", "pans-3"
+  ];
 
 let shuffledCards = shuffle(cards);
 
@@ -52,11 +55,58 @@ function createCards() {
   for (let card of shuffledCards) {
       const li = document.createElement("LI");
       li.classList.toggle("card");
-      const img = document.createElement("img");
-      img.src = "assets/" + card + "-logo.png";
-      img.classList.toggle("logo");
-      li.appendChild(img);
-    
+      
+      // map logos to cards
+      switch (card) {
+        case "alogo":
+        case "tlogo":
+        case "plogo":
+          const img = document.createElement("img");
+          img.src = "assets/" + card + ".png";
+          img.classList.toggle("logo");
+          li.appendChild(img);
+          break;
+      }
+
+      // map answers to cards
+      let answer;
+      switch (card) {
+        case "aans-1":
+          answer = "Preferred ARB with early and late stage renal protection";
+          break;
+        case "aans-2":
+          answer = "Reduces albuminuria";
+          break;
+        case "aans-3":
+          answer = "Delays progression of diabetic nephropathy";
+          break;
+        case "tans-1":
+          answer = "42% lesser nocturnal hypoglycemia";
+          break;
+        case "tans-2":
+          answer = "Up to 36 hours action";
+          break;
+        case "tans-3":
+          answer = "50% lesser glycemic variability";
+          break;
+        case "pans-1":
+          answer = "plavix answer 1"
+          break;
+        case "pans-2":
+          answer = "plavix answer 2"
+          break;
+        case "pans-3":
+          answer = "plavix answer 3"
+          break;
+      }
+
+      if (answer != undefined) {
+        const text = document.createElement("div");
+        text.innerText = answer;
+        text.classList.toggle("answer-text");
+        li.appendChild(text);
+      }
+
       const deck = document.querySelector('.deck');
       deck.appendChild(li);
   }
@@ -106,11 +156,22 @@ function addCard(card, cardHTML, testList, pos) {
   }
 }
 
-function testCards(card1, html1, x1, card2, html2, x2) {
-  if (card1 === card2 && x1 != x2) {
-      cardsMatch(html1, html2);
-  } else {
+function testCards(card1, html1, pos1, card2, html2, pos2) {
+  switch (true) {
+    case pos1 == pos2:
       cardsDontMatch(html1, html2);
+      break;
+    case card1 == "alogo" && /^aans/.test(card2):
+    case card1 == "tlogo" && /^tans/.test(card2):
+    case card1 == "plogo" && /^pans/.test(card2):
+    case /^aans/.test(card1) && card2 == "alogo":
+    case /^tans/.test(card1) && card2 == "tlogo":
+    case /^pans/.test(card1) && card2 == "plogo":
+      cardsMatch(html1, html2);
+      break;
+    default:
+      cardsDontMatch(html1, html2);
+      break;
   }
 }
 
@@ -118,7 +179,7 @@ function cardsMatch(card1, card2) {
   card1.classList.add('match');
   card2.classList.add('match');
   match++;
-  if (match === 6) {
+  if (match === 9) {
       win();
   }
 }
@@ -163,6 +224,7 @@ let home = document.querySelector("#home-nav");
 home.addEventListener("click", backToHome, false);
 function backToHome() {
   modal.classList.remove('show-modal');
+  header.classList.remove('hideElements');
   homepage.classList.remove('hideElements');
   scoreTable.classList.add('hideElements');
   updateHighscoreTable();
@@ -200,6 +262,7 @@ newGameButton2.addEventListener("click", newGame);
 
 function newGame() {
   modal.classList.remove('show-modal');
+  header.classList.add('hideElements');
   homepage.classList.add('hideElements');
   scoreTable.classList.remove('hideElements');
   main.classList.remove('hideElements');
@@ -210,7 +273,7 @@ let submitBtn = document.querySelector("#submitBtn")
 submitBtn.addEventListener("click", () => {
   let nameInput = document.querySelector("#name-input")
   let nameInputDiv = document.querySelector("#name-input-div")
-  localStorage.setItem(nameInput.value, [movesCounter, ms])
+  addGlobalHighscore(nameInput.value, movesCounter, ms)
   newGameButton2.classList.remove("hideElements")
   backToHomeBtn.classList.remove("hideElements")
   submitBtn.classList.add("hideElements")
@@ -221,34 +284,61 @@ let backToHomeBtn = document.querySelector("#back-to-home")
 backToHomeBtn.addEventListener("click", backToHome)
 
 function updateHighscoreTable(){
-  updateHighscore()
   for(i=1; i<=5; i++){
     rowHTML = document.querySelector(`.row${i}`)
     if(scoreboard[i-1]){
+      // scoreboard[i][0]: name
+      // scoreboard[i][1]: moves
+      // scoreboard[i][2]: timing
       rowHTML.children[1].innerHTML = scoreboard[i-1][0]
-      rowHTML.children[4].innerHTML = scoreboard[i-1][1]
       let time = scoreboard[i-1][2]/100
       rowHTML.children[2].children[0].classList.remove("hideElements")
       rowHTML.children[3].innerHTML = time.toFixed(2) + 's'
+      rowHTML.children[4].innerHTML = scoreboard[i-1][1]
     }
   }
 }
 
-function updateHighscore(){
-  scoreboard = []
-  keys = Object.keys(localStorage)
-  for(i=0; i<keys.length; i++){
-    scoreboard.push([keys[i],...localStorage.getItem(keys[i]).split(',')])
+// Global Highscore
+const BIN_ID = "6880a325ae596e708fba3ff9";
+const DB_ENDPOINT = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`
+
+function getGlobalHighscore(){
+  fetch(DB_ENDPOINT)
+  .then(res => res.json())
+  .then(data => {
+    scoreboard = data.record.scores;
+  });
+}
+
+async function addGlobalHighscore(name, moves, timing) {
+  if (scoreboard.length === 0) {
+    getGlobalHighscore()
   }
-  scoreboard.sort((a,b) => {
-    return (a[2] - b[2])
-  })
+
+  // Add new score in ascending order of timing
+  scoreboard.push({
+    name: name,
+    moves: moves,
+    timing: timing
+  });
+  scoreboard.sort((a,b) => a.timing - b.timing)
+
+  // Save updated scores
+  const putRes = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Bin-Versioning': 'false'
+    },
+    body: JSON.stringify({ scoreboard })
+  });
+
+  if (!putRes.ok) {
+    console.error('Failed to add score');
+  }
 }
 
-function clearLocalStorage(){
-  localStorage.clear
-}
-
-// clearLocalStorage()
+getGlobalHighscore()
+.then(updateHighscoreTable());
 initGame();
-updateHighscoreTable();
