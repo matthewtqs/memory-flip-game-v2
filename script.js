@@ -331,7 +331,8 @@ function getGlobalHighscore(){
   return fetch(DB_ENDPOINT)
   .then(res => res.json())
   .then(data => {
-    scoreboard = data.record.scoreboard;
+    scoreboard = data.record.scoreboard || [];
+    console.log("Successfully fetched scoreboard: ", scoreboard)
     return scoreboard
   });
 }
