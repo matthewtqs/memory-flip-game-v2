@@ -220,7 +220,7 @@ function cardsDontMatch(card1, card2) {
       card2.classList.toggle('no-match');
       card1.classList.toggle('show');
       card2.classList.toggle('show');
-  }, 800);
+  }, 350);
 }
 
 function win() {
