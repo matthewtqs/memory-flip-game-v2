@@ -177,11 +177,12 @@ body {
 }
 
 li.card {
-  font-size: 0;
+  color: transparent;
 }
 
 .card.show {
-  font-size: 13px;
+  /* font-size: 13px; */
+  color: black;
 }
 
 .answer-text {
@@ -211,9 +212,13 @@ li.card {
 }
 
 .no-match {
-/*   background: rgb(175, 38, 38); */
   background: #ff0800;
   transition: 0.1s;
+  /* border-color: #ff0800;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 5%;
+  box-shadow: none; */
 }
 
 .modal, .hs-modal {
@@ -386,6 +391,7 @@ td {
   .card {
     width: 15%;
     max-height: 30%;
+    font-size: 13px;
   }
 }
 
