@@ -72,7 +72,7 @@ function createCards() {
             imgText = "IDNT";
             break;
           case "alogo3":
-            imgText = "Renal";
+            imgText = "eGFR";
             break;
           case "plogo1":
             imgText = "CAPRIE";
@@ -81,7 +81,7 @@ function createCards() {
             imgText = "HOST-EXAM";
             break;
           case "plogo3":
-            imgText = "Recommendation";
+            imgText = "DAPT";
             break;
           case "tlogo1":
             imgText = "EDITION";
