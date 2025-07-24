@@ -133,10 +133,11 @@ function createCards() {
       }
 
       if (answer != undefined) {
-        const text = document.createElement("div");
-        text.innerText = answer;
-        text.classList.toggle("answer-text");
-        li.appendChild(text);
+        // const text = document.createElement("div");
+        // text.innerText = answer;
+        // text.classList.toggle("answer-text");
+        // li.appendChild(text);
+        li.innerText = answer;
       }
 
       const deck = document.querySelector('.deck');

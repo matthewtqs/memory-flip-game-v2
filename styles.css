@@ -153,6 +153,7 @@ body {
 }
 
 .card {
+  will-change: transform;
   transform: rotateY(180deg);
   transition: 0.5s;
   /* width: 150px;
@@ -173,6 +174,14 @@ body {
   cursor: pointer;
   transform-style: preserve-3d;
   aspect-ratio: 1 / 1;
+}
+
+li.card {
+  font-size: 0;
+}
+
+.card.show {
+  font-size: 13px;
 }
 
 .answer-text {
@@ -377,7 +386,6 @@ td {
   .card {
     width: 15%;
     max-height: 30%;
-    font-size: 13px;
   }
 }
 
