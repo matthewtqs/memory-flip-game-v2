@@ -20,7 +20,8 @@ const header = document.querySelector(".header");
 const homepage = document.querySelector(".homepage");
 const scoreTable = document.querySelector(".score-table");
 const main = document.querySelector("main");
-let scoreboard = []
+const nameInput = document.querySelector("#name-input")
+const nameInputDiv = document.querySelector("#name-input-div")
 
 function toggleModal() {
   modal.classList.toggle("show-modal");
@@ -35,17 +36,16 @@ function windowOnClick(event) {
 }
 
 closeButton.addEventListener("click", toggleModal);
-// hsCloseButton.addEventListener("click", () => hsModal.classList.remove("show-modal"))
 window.addEventListener("click", windowOnClick);
 
 let cardTest = [];
 let cards = 
   [
-    "alogo", "alogo", "alogo",
+    "alogo1", "alogo2", "alogo3",
     "aans-1", "aans-2", "aans-3",
-    "tlogo", "tlogo", "tlogo",
+    "tlogo1", "tlogo2", "tlogo3",
     "tans-1", "tans-2", "tans-3",
-    "plogo", "plogo", "plogo",
+    "plogo1", "plogo2", "plogo3",
     "pans-1", "pans-2", "pans-3"
   ];
 
@@ -57,46 +57,78 @@ function createCards() {
       li.classList.toggle("card");
       
       // map logos to cards
-      switch (card) {
-        case "alogo":
-        case "tlogo":
-        case "plogo":
-          const img = document.createElement("img");
-          img.src = "assets/" + card + ".png";
-          img.classList.toggle("logo");
-          li.appendChild(img);
-          break;
+      if (card.includes("logo")) {
+        const img = document.createElement("img");
+        img.src = "assets/" + card.slice(0, -1) + ".png";
+        img.classList.toggle("logo");
+        li.appendChild(img);
+
+        let imgText = ""
+        switch (card) {
+          case "alogo1":
+            imgText = "IRMA-2";
+            break;
+          case "alogo2":
+            imgText = "IDNT";
+            break;
+          case "alogo3":
+            imgText = "Renal";
+            break;
+          case "plogo1":
+            imgText = "CAPRIE";
+            break;
+          case "plogo2":
+            imgText = "HOST-EXAM";
+            break;
+          case "plogo3":
+            imgText = "Recommendation";
+            break;
+          case "tlogo1":
+            imgText = "EDITION";
+            break;
+          case "tlogo2":
+            imgText = "PKPD";
+            break;
+          case "tlogo3":
+            imgText = "Dosing";
+            break;
+        }
+
+        let imgTextDiv = document.createElement("div");
+        imgTextDiv.innerText = imgText
+        imgTextDiv.classList.toggle("logo-text")
+        li.appendChild(imgTextDiv)
       }
 
       // map answers to cards
       let answer;
       switch (card) {
         case "aans-1":
-          answer = "Preferred ARB with early and late stage renal protection";
+          answer = "~70% reduction in nephropathy progression at 300mg";
           break;
         case "aans-2":
-          answer = "Reduces albuminuria";
+          answer = "~20-30% lower risk of renal endpoints vs placebo/amlodipine";
           break;
         case "aans-3":
-          answer = "Delays progression of diabetic nephropathy";
+          answer = "Slows decline of eGFR, preserving kidney function";
           break;
         case "tans-1":
-          answer = "42% lesser nocturnal hypoglycemia";
+          answer = "30-40% less noctunal hypoglycemia";
           break;
         case "tans-2":
-          answer = "Up to 36 hours action";
+          answer = "Up to 36 hours, flatter profile";
           break;
         case "tans-3":
-          answer = "50% lesser glycemic variability";
+          answer = "±3 hours dosing flexibility without efficacy loss";
           break;
         case "pans-1":
-          answer = "plavix answer 1"
+          answer = "Reduce vascular events more than Aspirin"
           break;
         case "pans-2":
-          answer = "plavix answer 2"
+          answer = "Reduce bleeding vs Aspirin"
           break;
         case "pans-3":
-          answer = "plavix answer 3"
+          answer = "Class IA for 12-month DAPT post-ACS"
           break;
       }
 
@@ -161,12 +193,7 @@ function testCards(card1, html1, pos1, card2, html2, pos2) {
     case pos1 == pos2:
       cardsDontMatch(html1, html2);
       break;
-    case card1 == "alogo" && /^aans/.test(card2):
-    case card1 == "tlogo" && /^tans/.test(card2):
-    case card1 == "plogo" && /^pans/.test(card2):
-    case /^aans/.test(card1) && card2 == "alogo":
-    case /^tans/.test(card1) && card2 == "tlogo":
-    case /^pans/.test(card1) && card2 == "plogo":
+    case card1[0] === card2[0] && card1[card1.length-1] === card2[card2.length-1]:
       cardsMatch(html1, html2);
       break;
     default:
@@ -270,31 +297,28 @@ function newGame() {
 }
 
 let submitBtn = document.querySelector("#submitBtn")
-submitBtn.addEventListener("click", () => {
-  let nameInput = document.querySelector("#name-input")
-  let nameInputDiv = document.querySelector("#name-input-div")
-  addGlobalHighscore(nameInput.value, movesCounter, ms)
+submitBtn.addEventListener("click", async () => {
   newGameButton2.classList.remove("hideElements")
   backToHomeBtn.classList.remove("hideElements")
   submitBtn.classList.add("hideElements")
   nameInputDiv.classList.add("hideElements")
+  await addGlobalHighscore(nameInput.value, movesCounter, ms)
 })
 
 let backToHomeBtn = document.querySelector("#back-to-home")
 backToHomeBtn.addEventListener("click", backToHome)
 
+let scoreboard = []
 function updateHighscoreTable(){
   for(i=1; i<=5; i++){
     rowHTML = document.querySelector(`.row${i}`)
-    if(scoreboard[i-1]){
-      // scoreboard[i][0]: name
-      // scoreboard[i][1]: moves
-      // scoreboard[i][2]: timing
-      rowHTML.children[1].innerHTML = scoreboard[i-1][0]
-      let time = scoreboard[i-1][2]/100
+    score = scoreboard[i-1]
+    if(score){
+      rowHTML.children[1].innerHTML = score.name
+      let time = score.timing/100
       rowHTML.children[2].children[0].classList.remove("hideElements")
       rowHTML.children[3].innerHTML = time.toFixed(2) + 's'
-      rowHTML.children[4].innerHTML = scoreboard[i-1][1]
+      rowHTML.children[4].innerHTML = score.moves
     }
   }
 }
@@ -304,10 +328,11 @@ const BIN_ID = "6880a325ae596e708fba3ff9";
 const DB_ENDPOINT = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`
 
 function getGlobalHighscore(){
-  fetch(DB_ENDPOINT)
+  return fetch(DB_ENDPOINT)
   .then(res => res.json())
   .then(data => {
-    scoreboard = data.record.scores;
+    scoreboard = data.record.scoreboard;
+    return scoreboard
   });
 }
 
@@ -340,5 +365,5 @@ async function addGlobalHighscore(name, moves, timing) {
 }
 
 getGlobalHighscore()
-.then(updateHighscoreTable());
+.then(updateHighscoreTable);
 initGame();
